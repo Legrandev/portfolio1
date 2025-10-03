@@ -3,48 +3,25 @@
 export function StarryBackground() {
   return (
     <div className="fixed inset-0 z-0 bg-black overflow-hidden">
-      {/* Petites étoiles */}
-      <div className="stars-small" />
-      {/* Étoiles moyennes */}
-      <div className="stars-medium" />
-      {/* Grandes étoiles */}
-      <div className="stars-large" />
+      <div className="stars"></div>
 
       <style jsx>{`
-        .stars-small,
-        .stars-medium,
-        .stars-large {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          background: transparent;
-          animation: twinkle 3s infinite;
-        }
-
-        .stars-small {
-          box-shadow: 
-            ${Array.from({ length: 200 }, () => `${Math.random() * 2000}px ${Math.random() * 1000}px #FFF`).join(", ")};
-        }
-
-        .stars-medium {
-          width: 2px;
-          height: 2px;
-          box-shadow: 
-            ${Array.from({ length: 100 }, () => `${Math.random() * 2000}px ${Math.random() * 1000}px #FFF`).join(", ")};
-          animation-delay: 1s;
-        }
-
-        .stars-large {
-          width: 3px;
-          height: 3px;
-          box-shadow: 
-            ${Array.from({ length: 50 }, () => `${Math.random() * 2000}px ${Math.random() * 1000}px #FFF`).join(", ")};
-          animation-delay: 2s;
+        .stars {
+          width: 100%;
+          height: 100%;
+          background: black;
+          background-image: 
+            radial-gradient(white 1px, transparent 1px),
+            radial-gradient(white 1px, transparent 1px),
+            radial-gradient(white 1px, transparent 1px);
+          background-repeat: repeat;
+          background-size: 20px 20px, 40px 40px, 80px 80px;
+          animation: twinkle 5s infinite alternate;
         }
 
         @keyframes twinkle {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.3; }
+          from { opacity: 0.7; }
+          to { opacity: 1; }
         }
       `}</style>
     </div>
